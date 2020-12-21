@@ -2,9 +2,10 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta id="mandelbrot_data" data-labels={{mandelbrot_data}}>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
         <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <script type="text/javascript" src="{{url_for('static', filename='javascript/main.js')}}"></script>        
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap" rel="stylesheet"> 
         <title>Aaron Haarti</title>        
@@ -28,8 +29,9 @@
                 <img src="{{ url_for('static', filename='images/mandelbrot.png') }}" alt="Seahorse valley">
             </div>
         </div>
+        <div id="tester"></div>
+
     </body>
+    <script type="text/javascript" src="{{url_for('static', filename='javascript/load-mandelbrot.js')}}"></script>        
+
 </html>
-<script>
-    var labelsData=document.getElementById("mandelbrot_data").dataset;
-</script>
