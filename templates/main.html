@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta id="mandelbrot_data" data-labels={{mandelbrot_data}}>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap" rel="stylesheet"> 
@@ -29,3 +30,6 @@
         </div>
     </body>
 </html>
+<script>
+    var labelsData=document.getElementById("mandelbrot_data").dataset;
+</script>
