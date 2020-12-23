@@ -18,13 +18,13 @@ def mandelbrot():
 @app.route('/data/<coord>')
 def generate_set(coord):
     
-    min_x,max_x,min_y,max_y = np.array(coord.split("_")).astype(int)
+    min_x,max_x,min_y,max_y = np.array(coord.split("_")).astype(float)
     mandelbrot_data = generate(min_x,max_x,min_y,max_y,1000).T
     mandelbrot_data = mandelbrot_data*255/np.max(mandelbrot_data)
     dim = np.shape(mandelbrot_data)
     
     #l=[ [ 1, 2 ], [ 3, 4 ]]
-    return jsonify(set=mandelbrot_data.flatten().tolist(),height=dim[0],width=dim[1])
+    return jsonify(set=mandelbrot_data.tolist(),height=dim[0],width=dim[1])
 
 
 if __name__ == '__main__':

@@ -72,3 +72,15 @@ button{
     width:100%;
     transition:800ms ease all;
   }
+
+  #canvasControls {
+    background-color: transparent;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 5;
+    padding: 0px;
+    margin: 0px;
+    width:100%;
+    height:100%;
+  }
