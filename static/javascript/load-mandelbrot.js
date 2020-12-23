@@ -1,28 +1,33 @@
-let data;
+let mandelbrot;
 
 function preload() {
 
-  let url = "/data";
-  data = loadJSON(url);
-  console.log(data)
+  let url = "/data/-2_1_-1_1";
+  mandelbrot = loadJSON(url);
 }
 
 function setup() {
 
-  createCanvas(data.width, data.height);
+  createCanvas(mandelbrot.width, mandelbrot.height);
   background(0);
   stroke(255);
   noLoop();
+  drawMandelbrot(mandelbrot);
 }
 
-function draw() {
+function keyPressed() {
+  url = "/data/-1_1_-1_1"
+  if (key == 'l') loadJSON(url, drawMandelbrot);
+}
 
+function drawMandelbrot(mandelbrot) {
+  resizeCanvas(mandelbrot.width,mandelbrot.height)
   loadPixels();
-  for (i = 1; i < data.set.length*4; i++) {
-    pixels[i] = data.set[i];
-    pixels[i + 1] = data.set[i];
-    pixels[i + 2] = data.set[i];
-    pixels[i + 3] = data.set[i];
+  for (i = 0; i < mandelbrot.set.length; i++) {
+    pixels[i*4] = mandelbrot.set[i];
+    pixels[i*4 + 1] = mandelbrot.set[i];
+    pixels[i*4 + 2] = mandelbrot.set[i];
+    pixels[i*4 + 3] = mandelbrot.set[i];
   }
   updatePixels();
 }
