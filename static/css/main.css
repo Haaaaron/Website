@@ -75,10 +75,6 @@ button{
 
   #canvasControls {
     background-color: transparent;
-    position: absolute;
-    left: 0px;
-    top: 0px;
     z-index: 5;
-    padding: 0px;
-    margin: 0px;
+
   }

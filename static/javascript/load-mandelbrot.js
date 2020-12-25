@@ -1,8 +1,6 @@
 let mandelbrot;
 let box = null;
 var ccanvas = $('#canvasControls');
-ccanvas.width  = window.innerWidth;
-ccanvas.height = window.innerHeight;
 
 function preload() {
 
@@ -10,14 +8,23 @@ function preload() {
   mandelbrot = loadJSON(url);
 
 }
-
+console.log(mandelbrot)
 function setup() {
   
   var myCanvas = createCanvas(mandelbrot.width, mandelbrot.height);
-  myCanvas.parent("canvasContainer")
-  myCanvas.style("z-index:-5")
+  myCanvas.parent("canvasContainer");
+  myCanvas.style("z-index:0");
+  console.log(myCanvas.position)
 
+  var cccanvas = select('#canvasContainer');
+  var ccanvas = select('#canvasControls');
+  cccanvas.size(mandelbrot.width,mandelbrot.height)
+  ccanvas.style("height: inherit");
+  ccanvas.style("width: inherit");
+  ccanvas.position(100,100);
+  console.log(ccanvas.height);
   drawMandelbrot(mandelbrot);
+
 
 }
 
@@ -50,7 +57,6 @@ function drawMandelbrot(data) {
 
 $(document).ready(function()
 {
-
   $('#canvasControls').mousedown(function(e)
     {
       console.log(box)
@@ -62,10 +68,11 @@ $(document).ready(function()
   {
     if ( box != null ) {
       var c = ccanvas[0].getContext('2d');
-      c.lineWidth = 1;
+      console.log(c)
+      c.lineWidth = 0.5;
 
       // clear out old box first
-      c.clearRect(0, 0, ccanvas.width, ccanvas.height);
+      c.clearRect(box[0], box[1], ccanvas.width, ccanvas.height);
 
       // draw new box
       c.strokeStyle = '#ED6410';
