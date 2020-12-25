@@ -1,30 +1,39 @@
 let mandelbrot;
 let box = null;
+var ccanvas = $('#canvasControls');
+ccanvas.width  = window.innerWidth;
+ccanvas.height = window.innerHeight;
 
 function preload() {
 
   let url = "/data/-2_1_-1_1";
   mandelbrot = loadJSON(url);
-  console.log(mandelbrot.set)
+
 }
 
 function setup() {
   
   var myCanvas = createCanvas(mandelbrot.width, mandelbrot.height);
   myCanvas.parent("canvasContainer")
+  myCanvas.style("z-index:-5")
+
   drawMandelbrot(mandelbrot);
+
 }
 
 function keyPressed() {
+
   url = "/data/-0.01_0.01_-1_-0.8"
   if (key == 'l') loadJSON(url, drawMandelbrot);
+
 }
 
 function drawMandelbrot(data) {
+
   resizeCanvas(data.width,data.height)
-  console.log(data.set)
+
   for (var i = 0; i< data.height; i++) {
-    for (var j = 0; j<data.width; j++){
+    for (var j = 0; j<data.width; j++) {
       stroke(data.set[i][j]);
       point(j,i);
 
@@ -39,28 +48,33 @@ function drawMandelbrot(data) {
 
 }
 
-$('canvasControls').onmousedown = function(e)
+$(document).ready(function()
+{
+
+  $('#canvasControls').mousedown(function(e)
     {
+      console.log(box)
       if ( box == null )
         box = [e.clientX, e.clientY, 0, 0];
+    });
+
+  $('#canvasControls').mousemove(function(e)
+  {
+    if ( box != null ) {
+      var c = ccanvas[0].getContext('2d');
+      c.lineWidth = 1;
+
+      // clear out old box first
+      c.clearRect(0, 0, ccanvas.width, ccanvas.height);
+
+      // draw new box
+      c.strokeStyle = '#ED6410';
+      box[2] = e.clientX;
+      box[3] = e.clientY;
+      c.strokeRect(box[0], box[1], box[2]-box[0], box[3]-box[1]);
     }
-
-$('canvasControls').onmousemove = function(e)
-{
-  if ( box != null ) {
-    var c = ccanvas.getContext('2d');
-    c.lineWidth = 1;
-
-    // clear out old box first
-    c.clearRect(0, 0, ccanvas.width, ccanvas.height);
-
-    // draw new box
-    c.strokeStyle = '#FF3B03';
-    box[2] = e.clientX;
-    box[3] = e.clientY;
-    c.strokeRect(box[0], box[1], box[2]-box[0], box[3]-box[1]);
-  }
-}
+  });
+}); 
 
 
 
