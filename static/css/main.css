@@ -1,7 +1,9 @@
 body {
-    padding:3em 3em;
     font-family: 'Titillium Web', sans-serif;
     font-size: 1.5rem;
+    height: auto;
+    width: auto;
+    padding:3em 3em;
 }
 
 .wrapper1 {
@@ -75,6 +77,11 @@ button{
 
   #canvasControls {
     background-color: transparent;
+    position: absolute;
+    top:inherit;
+    left: inherit;
     z-index: 5;
+    padding: 0;
+    margin: 0px;
 
   }

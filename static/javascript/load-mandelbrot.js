@@ -1,6 +1,9 @@
 let mandelbrot;
 let box = null;
-var ccanvas = $('#canvasControls');
+
+var ccanvas = document.getElementById("canvasControls")
+ccanvas.width = window.innerWidth;
+ccanvas.height = window.innerHeight;
 
 function preload() {
 
@@ -8,23 +11,10 @@ function preload() {
   mandelbrot = loadJSON(url);
 
 }
-console.log(mandelbrot)
 function setup() {
-  
-  var myCanvas = createCanvas(mandelbrot.width, mandelbrot.height);
-  myCanvas.parent("canvasContainer");
-  myCanvas.style("z-index:0");
-  console.log(myCanvas.position)
 
-  var cccanvas = select('#canvasContainer');
-  var ccanvas = select('#canvasControls');
-  cccanvas.size(mandelbrot.width,mandelbrot.height)
-  ccanvas.style("height: inherit");
-  ccanvas.style("width: inherit");
-  ccanvas.position(100,100);
-  console.log(ccanvas.height);
+  createCanvas(mandelbrot.width,mandelbrot.height)
   drawMandelbrot(mandelbrot);
-
 
 }
 
@@ -35,10 +25,14 @@ function keyPressed() {
 
 }
 
+function mouseClicked() {
+
+  console.log(mouseX,mouseY)
+}
+
 function drawMandelbrot(data) {
 
   resizeCanvas(data.width,data.height)
-
   for (var i = 0; i< data.height; i++) {
     for (var j = 0; j<data.width; j++) {
       stroke(data.set[i][j]);
@@ -56,29 +50,36 @@ function drawMandelbrot(data) {
 }
 
 $(document).ready(function()
-{
-  $('#canvasControls').mousedown(function(e)
-    {
+{     
+  
+  var ccanvas = $('#canvasControls');
+  var c = ccanvas[0].getContext('2d');
+
+  ccanvas.mousedown(function(e) {
       console.log(box)
       if ( box == null )
         box = [e.clientX, e.clientY, 0, 0];
-    });
+  });
 
-  $('#canvasControls').mousemove(function(e)
-  {
+  ccanvas.mousemove(function(e) {
     if ( box != null ) {
-      var c = ccanvas[0].getContext('2d');
-      console.log(c)
-      c.lineWidth = 0.5;
+      console.log(ccanvas.height)
+      c.lineWidth = 1;
 
       // clear out old box first
-      c.clearRect(box[0], box[1], ccanvas.width, ccanvas.height);
-
+      c.clearRect(0, 0, ccanvas[0].width, ccanvas[0].height);
       // draw new box
       c.strokeStyle = '#ED6410';
       box[2] = e.clientX;
       box[3] = e.clientY;
       c.strokeRect(box[0], box[1], box[2]-box[0], box[3]-box[1]);
+    }
+  });
+
+  ccanvas.mouseup(function(e) {
+    if (box != null) {
+      c.clearRect(0, 0, ccanvas[0].width, ccanvas[0].height);
+      box = null;
     }
   });
 }); 
