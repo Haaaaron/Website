@@ -17,3 +17,9 @@ body {
     margin: 0px;
 
   }
+
+#controls {
+    display:none;
+    z-index: 10;
+    position: absolute;
+}

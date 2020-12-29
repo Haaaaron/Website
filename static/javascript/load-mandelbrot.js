@@ -1,37 +1,35 @@
+let mandelbrotInitial;
 let mandelbrot;
+let urlInitial = "/data/-2_1_-1_1_1500";
 let box = null;
+let n = 1500;
+let url;
 
 var ccanvas = document.getElementById("canvasControls")
 ccanvas.width = window.innerWidth;
 ccanvas.height = window.innerHeight;
 
 function preload() {
-
-  let url = "/data/-2_1_-1_1";
-  mandelbrot = loadJSON(url);
+  mandelbrotInitial = loadJSON(urlInitial);
+  mandelbrot = mandelbrotInitial;
 
 }
 function setup() {
 
-  createCanvas(mandelbrot.width,mandelbrot.height)
+  var myCanvas = createCanvas(mandelbrot.width,mandelbrot.height);
+  myCanvas.parent('mandelbrotSet');
   drawMandelbrot(mandelbrot);
 
 }
 
-function keyPressed() {
+function loadMouseCoordinates(coord) {
 
-  url = "/data/-0.01_0.01_-1_-0.8"
-  if (key == 'l') loadJSON(url, drawMandelbrot);
-
-}
-
-function mouseClicked() {
-
-  console.log(mouseX,mouseY)
+  url = "/data/" + coord.join("_") + "_" + n;
+  mandelbrot = loadJSON(url, drawMandelbrot);
 }
 
 function drawMandelbrot(data) {
-
+  console.log(url)
   resizeCanvas(data.width,data.height)
   for (var i = 0; i< data.height; i++) {
     for (var j = 0; j<data.width; j++) {
@@ -40,30 +38,23 @@ function drawMandelbrot(data) {
 
     }
   }
-  // for (i = 0; i < mandelbrot.set.length; i++) {
-  //   pixels[i*4] = mandelbrot.set[i];
-  //   pixels[i*4 + 1] = mandelbrot.set[i];
-  //   pixels[i*4 + 2] = mandelbrot.set[i];
-  //   pixels[i*4 + 3] = mandelbrot.set[i];
-  // }
-
 }
 
-$(document).ready(function()
+$(window).ready(function()
 {     
-  
   var ccanvas = $('#canvasControls');
   var c = ccanvas[0].getContext('2d');
 
+  $('#controls').css('display','block');
+
   ccanvas.mousedown(function(e) {
-      console.log(box)
-      if ( box == null )
+
+      if ( box == null && e.clientX <= mandelbrot.width && e.clientY <= mandelbrot.height)
         box = [e.clientX, e.clientY, 0, 0];
   });
 
   ccanvas.mousemove(function(e) {
     if ( box != null ) {
-      console.log(ccanvas.height)
       c.lineWidth = 1;
 
       // clear out old box first
@@ -76,13 +67,41 @@ $(document).ready(function()
     }
   });
 
-  ccanvas.mouseup(function(e) {
+  ccanvas.mouseup(function() {
     if (box != null) {
+
+      //coord=[min_x,max_x,min_y,max_y]
+      let coord = mandelbrot.coord;
+      let width = mandelbrot.width;
+      let lenx = abs(coord[1]-coord[0]);
+      let leny = abs(coord[3]-coord[2]);
+      let height = mandelbrot.height;
+      let Recoord=null;
+      let Imcoord=null;
+
+      // clear box
       c.clearRect(0, 0, ccanvas[0].width, ccanvas[0].height);
+
+      //convert pixels to complex coordinates
+      Recoord = [box[0]/width*lenx+coord[0],box[2]/width*lenx+coord[0]].sort(function(a, b){return a-b});
+      Imcoord = [-box[1]/height*leny+coord[3],-box[3]/height*leny+coord[3]].sort(function(a, b){return a-b});
       box = null;
+
+      loadMouseCoordinates(Recoord.concat(Imcoord))
     }
   });
+
+  $('#reset').click(function() {
+    mandelbrot=mandelbrotInitial;
+    drawMandelbrot(mandelbrotInitial);
+  })
 }); 
+
+$(window).resize(function() {
+  var ccanvas = document.getElementById("canvasControls")
+  ccanvas.width = window.innerWidth;
+  ccanvas.height = window.innerHeight;
+});
 
 
 

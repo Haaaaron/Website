@@ -11,9 +11,12 @@
         <title>Aaron Haarti</title>        
     </head>
     <body>
-
-        <canvas id = "canvasControls" style="position:absolute"></canvas>
-
+        <div id = "mandelbrotSet">
+            <canvas id = "canvasControls" style="position:absolute"></canvas>
+        </div>
+        <div id="controls">
+            <button id="reset">Reset</button>
+        </div>        
     </body>
     <script type="text/javascript" src="{{url_for('static', filename='javascript/load-mandelbrot.js')}}"></script>        
 

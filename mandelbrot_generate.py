@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import time
 
 
-def generate(min_x=-2,max_x=1,min_y=-1,max_y=1, n=1000):
+def generate(min_x=-2,max_x=1,min_y=-1,max_y=1, n=6000):
 
     abs_x = abs(max_x-min_x)
     abs_y = abs(max_y-min_y)
@@ -19,4 +19,5 @@ def generate(min_x=-2,max_x=1,min_y=-1,max_y=1, n=1000):
     return data
 
 if __name__ == '__main__':
-    generate()
+    plt.imshow(data)
+    plt.show()
