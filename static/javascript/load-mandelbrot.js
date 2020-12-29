@@ -1,5 +1,6 @@
 let mandelbrotInitial;
 let mandelbrot;
+let mandelbrotPrevious;
 let urlInitial = "/data/-2_1_-1_1_1500";
 let box = null;
 let n = 1500;
@@ -25,6 +26,7 @@ function setup() {
 function loadMouseCoordinates(coord) {
 
   url = "/data/" + coord.join("_") + "_" + n;
+  mandelbrotPrevious = mandelbrot;
   mandelbrot = loadJSON(url, drawMandelbrot);
 }
 
@@ -94,6 +96,11 @@ $(window).ready(function()
   $('#reset').click(function() {
     mandelbrot=mandelbrotInitial;
     drawMandelbrot(mandelbrotInitial);
+  })
+
+  $('#undo').click(function() {
+    mandelbrot=mandelbrotPrevious;
+    drawMandelbrot(mandelbrot);
   })
 }); 
 

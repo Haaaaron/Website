@@ -35,6 +35,5 @@ def generate_set(coord):
 
 
 if __name__ == '__main__':
-    print(np.shape(generate()))
     app.run(debug=True, use_debugger=False, use_reloader=False)
     

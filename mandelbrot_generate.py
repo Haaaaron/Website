@@ -12,8 +12,8 @@ def generate(min_x=-2,max_x=1,min_y=-1,max_y=1, n=6000):
     norm_y = abs_y/(abs_x+abs_y)
     i_n = int(norm_x*n)
     j_n = int(norm_y*n)
-
-    data = mandelbrot.generate_heat_map(min_x,max_y,i_n,j_n,abs_x,abs_y)
+    print(i_n,j_n)
+    data = mandelbrot.generate_heat_map(min_x,max_y,i_n,j_n,abs_x,abs_y,100)
 
 
     return data
