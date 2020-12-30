@@ -11,6 +11,8 @@ body {
 #container{
     display: flex;
     flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
 }
 
 #canvasControls {
@@ -29,8 +31,22 @@ body {
     z-index: 10;
     padding: 3em 3em;
     float: right;
+    width: 15vw;
 }
 
+#recalculate {
+    margin: 0.5em 0.5em;
+}
+label{
+    color: #FFFFFF;
+    font-family:'Roboto',sans-serif;
+    font-size: 0.8rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
 button{
     padding:0.5em 1.5em;
     border:0.1em solid #FFFFFF;

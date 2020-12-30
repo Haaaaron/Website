@@ -18,8 +18,15 @@
             <div id="controls">
                 <button id="reset">Reset</button>
                 <button id="undo">Undo</button>
+                <form id="constants">
+                    <label for="maxIterations">Iteration count</label>
+                    <input type="text" id="inputs" name="maxIterations">
+                    <label for="pixelDensity">Pixel density</label>
+                    <input type="text" id="inputs" name="pixelDensity">
+                </form>
+                <button id = "recalculate">Recalculate</button>
             </div>  
-        </div>      
+        </div>     
     </body>
     <script type="text/javascript" src="{{url_for('static', filename='javascript/load-mandelbrot.js')}}"></script>        
 

@@ -22,8 +22,8 @@ def generate_set(coord):
     
 
     t0 = time.time()
-    min_x,max_x,min_y,max_y,n = np.array(coord.split("_")).astype(float)
-    mandelbrot_data = generate(min_x,max_x,min_y,max_y,n).T
+    min_x,max_x,min_y,max_y,n,iteration = np.array(coord.split("_")).astype(float)
+    mandelbrot_data = generate(min_x,max_x,min_y,max_y,n,iteration).T
     mandelbrot_data = mandelbrot_data*255/np.max(mandelbrot_data)
     dim = np.shape(mandelbrot_data)
     coord=[min_x,max_x,min_y,max_y]

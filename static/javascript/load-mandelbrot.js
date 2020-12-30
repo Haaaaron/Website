@@ -1,17 +1,22 @@
 let mandelbrotInitial;
 let mandelbrot;
 let mandelbrotPrevious;
-let urlInitial = "/data/-2_1_-1_1_1500";
 let box = null;
-let n = 1500;
-let url;
+let urlInitial = {
+  coord: [-2,1,-1,1],
+  density: 1500,
+  iterations: 100
+}
+let url = urlInitial;
 
 var ccanvas = document.getElementById("canvasControls")
 ccanvas.width = window.innerWidth;
 ccanvas.height = window.innerHeight;
 
 function preload() {
-  mandelbrotInitial = loadJSON(urlInitial);
+  
+  let loadUrl = "/data/" + url.coord.join("_") + "_" + url.density + "_" + url.iterations;
+  mandelbrotInitial = loadJSON(loadUrl);
   mandelbrot = mandelbrotInitial;
 
 }
@@ -23,15 +28,14 @@ function setup() {
 
 }
 
-function loadMouseCoordinates(coord) {
+function reloadMandelbrot() {
 
-  url = "/data/" + coord.join("_") + "_" + n;
+  let loadUrl = "/data/" + url.coord.join("_") + "_" + url.density + "_" + url.iterations;
   mandelbrotPrevious = mandelbrot;
-  mandelbrot = loadJSON(url, drawMandelbrot);
+  mandelbrot = loadJSON(loadUrl, drawMandelbrot);
 }
 
 function drawMandelbrot(data) {
-  console.log(url)
   resizeCanvas(data.width,data.height)
   for (var i = 0; i< data.height; i++) {
     for (var j = 0; j<data.width; j++) {
@@ -88,19 +92,28 @@ $(window).ready(function()
       Imcoord = [-box[1]/height*leny+coord[3],-box[3]/height*leny+coord[3]].sort(function(a, b){return a-b});
       box = null;
 
-      loadMouseCoordinates(Recoord.concat(Imcoord))
+      url.coord = Recoord.concat(Imcoord);
+      reloadMandelbrot();
     }
   });
 
   $('#reset').click(function() {
     mandelbrot=mandelbrotInitial;
     drawMandelbrot(mandelbrotInitial);
-  })
+  });
 
   $('#undo').click(function() {
     mandelbrot=mandelbrotPrevious;
     drawMandelbrot(mandelbrot);
-  })
+  });
+
+  $('#recalculate').click(function() {
+    var constants = $('#constants').serializeArray();
+    url.iterations = constants[0].value;
+    url.density = constants[1].value;
+    reloadMandelbrot();
+  });
+
 }); 
 
 $(window).resize(function() {
