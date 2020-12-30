@@ -47,7 +47,6 @@ $(window).ready(function()
   var ccanvas = $('#canvasControls');
   var c = ccanvas[0].getContext('2d');
 
-  $('#controls').css('display','block');
 
   ccanvas.mousedown(function(e) {
 

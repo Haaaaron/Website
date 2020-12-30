@@ -11,13 +11,15 @@
         <title>Aaron Haarti</title>        
     </head>
     <body>
-        <div id = "mandelbrotSet">
-            <canvas id = "canvasControls" style="position:absolute"></canvas>
-        </div>
-        <div id="controls">
-            <button id="reset">Reset</button>
-            <button id="undo">Undo</button>
-        </div>        
+        <div id = "container">
+            <div id = "mandelbrotSet">
+                <canvas id = "canvasControls" style="position:absolute"></canvas>
+            </div>
+            <div id="controls">
+                <button id="reset">Reset</button>
+                <button id="undo">Undo</button>
+            </div>  
+        </div>      
     </body>
     <script type="text/javascript" src="{{url_for('static', filename='javascript/load-mandelbrot.js')}}"></script>        
 
