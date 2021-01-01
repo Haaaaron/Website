@@ -4,7 +4,7 @@ let mandelbrotPrevious;
 let box = null;
 let urlInitial = {
   coord: [-2,1,-1,1],
-  density: 1500,
+  density: 1000,
   iterations: 100
 }
 let url = urlInitial;
@@ -35,16 +35,46 @@ function reloadMandelbrot() {
   mandelbrot = loadJSON(loadUrl, drawMandelbrot);
 }
 
+// function drawMandelbrot(data) {
+//   resizeCanvas(data.width,data.height)
+//   for (var i = 0; i< data.height; i++) {
+//     for (var j = 0; j<data.width; j++) {
+//       stroke(data.set[i][j]);
+//       point(j,i);
+
+//     }
+//   }
+// }
 function drawMandelbrot(data) {
-  resizeCanvas(data.width,data.height)
-  for (var i = 0; i< data.height; i++) {
-    for (var j = 0; j<data.width; j++) {
-      stroke(data.set[i][j]);
-      point(j,i);
+  resizeCanvas(data.width,data.height);
+  pixelDensity(1);
+  loadPixels();
+  for (var x = 0; x < width; x++) {
+    for (var y = 0; y < height; y++) {
+      var p = (x+y*width)*4;
+      pixels[p] = data.set[y][x];
+      pixels[p+1] = data.set[y][x];
+      pixels[p+2] = data.set[y][x];
+      pixels[p+3] = 255;
 
     }
   }
+  updatePixels();
 }
+// function drawMandelbrot(data) {
+//   resizeCanvas(data.width,data.height);
+//   console.log(data.set.length)
+//   console.log(width*height*pixelDensity()**2)
+//   console.log(pixelDensity(0.5))
+//   loadPixels();
+//   for (var i=0; i<data.set.length;i++) {
+//     pixels[i] = data.set[i];
+//     pixels[i+1] = data.set[i];
+//     pixels[i] = data.set[i];
+//     pixels[i] = data.set[i];
+//   }
+//   updatePixels();
+// }
 
 $(window).ready(function()
 {     

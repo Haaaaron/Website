@@ -5,10 +5,10 @@ subroutine generate_heat_map(matrix,min_x,min_y,i_n,j_n,abs_x,abs_y,max_iteratio
     ! coordinates and with resolution n
     !====================================================
     implicit none 
-    integer, parameter :: k=4
+    integer, parameter :: k=8
     real    (kind=k), intent(in)  :: min_x,min_y
     integer (kind=k), intent(in)  :: i_n,j_n,max_iteration
-    integer (kind=1), intent(out) :: matrix(i_n,j_n)
+    integer (kind=k), intent(out) :: matrix(i_n,j_n)
     complex (kind=k) :: z,z_0
     real    (kind=k) :: abs_x,abs_y
     integer (kind=k) :: i,j

@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import time
 
 
-def generate(min_x=-2,max_x=1,min_y=-1,max_y=1, n=1000,iteration=100):
+def generate(min_x=-2,max_x=1,min_y=-1,max_y=1, n=1500,iteration=255):
 
     abs_x = abs(max_x-min_x)
     abs_y = abs(max_y-min_y)
@@ -12,13 +12,14 @@ def generate(min_x=-2,max_x=1,min_y=-1,max_y=1, n=1000,iteration=100):
     norm_y = abs_y/(abs_x+abs_y)
     i_n = int(norm_x*n)
     j_n = int(norm_y*n)
-    print(i_n,j_n)
     data = mandelbrot.generate_heat_map(min_x,max_y,i_n,j_n,abs_x,abs_y,iteration).astype('float64')
-    data *= 255.0/data.max() 
+    print(data)
+    #data = ((data + 0.1) * (1/0.3) * 255).astype('uint8') 
 
     return data
 
 if __name__ == '__main__':
     data = generate()
+    print(data)
     plt.imshow(data)
     plt.show()
