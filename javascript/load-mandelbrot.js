@@ -4,7 +4,7 @@ let mandelbrotPrevious;
 let box = null;
 let urlInitial = {
   coord: [-2,1,-1,1],
-  density: 1000,
+  density: 3000,
   iterations: 100
 }
 let url = urlInitial;
@@ -33,6 +33,10 @@ function reloadMandelbrot() {
   let loadUrl = "/data/" + url.coord.join("_") + "_" + url.density + "_" + url.iterations;
   mandelbrotPrevious = mandelbrot;
   mandelbrot = loadJSON(loadUrl, drawMandelbrot);
+}
+
+function mouseClicked() {
+  console.log(mouseX,mouseY)
 }
 
 // function drawMandelbrot(data) {
@@ -83,22 +87,27 @@ $(window).ready(function()
 
 
   ccanvas.mousedown(function(e) {
-
-      if ( box == null && e.clientX <= mandelbrot.width && e.clientY <= mandelbrot.height)
-        box = [e.clientX, e.clientY, 0, 0];
+      console.log(e.pageX,e.pageY,mandelbrot.width,mandelbrot.height)
+      if ( box == null && e.pageX <= mandelbrot.width && e.pageY <= mandelbrot.height)
+        box = [e.pageX, e.pageY, 0, 0];
   });
 
   ccanvas.mousemove(function(e) {
     if ( box != null ) {
       c.lineWidth = 1;
-
       // clear out old box first
       c.clearRect(0, 0, ccanvas[0].width, ccanvas[0].height);
+
+      if (e.pageX >= mandelbrot.width || e.pageY >= mandelbrot.height) {
+        box = null
+      }
       // draw new box
       c.strokeStyle = '#ED6410';
-      box[2] = e.clientX;
-      box[3] = e.clientY;
+      box[2] = e.pageX;
+      box[3] = e.pageY;
       c.strokeRect(box[0], box[1], box[2]-box[0], box[3]-box[1]);
+
+      
     }
   });
 
@@ -147,9 +156,11 @@ $(window).ready(function()
 }); 
 
 $(window).resize(function() {
-  var ccanvas = document.getElementById("canvasControls")
-  ccanvas.width = window.innerWidth;
-  ccanvas.height = window.innerHeight;
+  var ccanvas = document.getElementById("canvasControls");
+  const setWidth = document.getElementById('mandelbrotSet').clientWidth
+  const setHeight = document.getElementById('mandelbrotSet').clientHeight
+  ccanvas.width = setWidth;
+  ccanvas.height = setHeight;
 });
 
 
