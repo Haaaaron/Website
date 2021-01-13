@@ -1,10 +1,11 @@
 body {
   font-family: "Titillium Web", sans-serif;
   font-size: 1.5rem;
-  padding: 3em 3em;
+  padding: 2em 2em;
   background-color: rgb(241, 237, 234);
   color: #7f2704;
   overflow-x: hidden;
+  width: 100%;
 }
 
 .wrapper1 {
@@ -21,7 +22,7 @@ body {
   color: #7f2704;
   max-width: 20em;
 }
-.image {
+#images {
   max-width: 80%;
   height: auto;
   display: flex;
@@ -29,7 +30,7 @@ body {
 }
 .buttons {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 button {
@@ -37,8 +38,8 @@ button {
   color: #7f2704;
   border: none;
   position: relative;
-  height: 60px;
-  font-size: 1.6em;
+  height: 50px;
+  font-size: 0.8em;
   margin-top: 0.5em;
   margin-bottom: 0.5em;
   width: 7em;
@@ -58,7 +59,7 @@ button:after {
   right: 0;
   height: 2px;
   width: 0;
-  background: #ed6410;
+  background: #7f2704;
   transition: 400ms ease all;
 }
 button:after {
@@ -75,16 +76,17 @@ button:hover:after {
 
 img {
   padding: 5px;
+  height: 500px;
 }
 
-a {
+#link {
   background-color: #7f2704;
   color: #ffffff;
   text-decoration: none;
   padding: 0 3px 0 3px;
 }
 
-a:hover {
+#link:hover {
   background-color: rgb(241, 237, 234);
   color: #000000;
   transition: 400ms ease all;

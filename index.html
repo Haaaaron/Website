@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./main.css" />
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico" />
     <script type="text/javascript" src="./javascript/main.js'"></script>
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap"
       rel="stylesheet"
     />
-    <title>Aaron Haarti</title>
+    <title>Aaron</title>
   </head>
   <body>
     <div class="wrapper1">
@@ -20,30 +20,44 @@
           <p>Theoretical physicist and programmer.</p>
           <p>Student at Univeristy of Helsinki.</p>
           <p>
-            Passion in understading systems for what they are, and depicting
+            Passion for understading systems for what they are and depicting
             them analytically and/or computationally.
           </p>
         </div>
         <div class="buttons">
           <button>CV</button>
-          <button>Github</button>
-          <button>Email</button>
+          <a href="https://github.com/Haaaaron" target="_blank"
+            ><button>Github</button></a
+          <a href="mailto: aaron.haarti@protonmail.com"
+            ><button>Email</button></a
+          >
         </div>
       </div>
-      <div class="image">
-        <div>
-          <p>
-            Generated with
-            <a href="https://github.com/Haaaaron/Mandelbrot-Zoom"
-              >Mandelbrot-Zoom</a
-            >. The webapp utilizes Fortran to do the heavy lifting.
-          </p>
+      <div id="set">
+        <p>
+          Generated with
+          <a href="https://github.com/Haaaaron/Mandelbrot-Zoom" target="_blank" id="link"
+            >Mandelbrot-Zoom</a
+          >. The webapp utilizes Fortran to do the heavy lifting.
+        </p>
+        <div id="images">
+          <img src="images/mandelbrot.png" />
+          <img src="images/mandelbrot1.png" />
+          <img src="images/mandelbrot2.png" />
         </div>
-        <img src="images/mandelbrot.png" />
-        <img src="images/mandelbrot1.png" />
-        <img src="images/mandelbrot2.png" />
       </div>
     </div>
     <div id="tester"></div>
   </body>
+  <script>
+    let allImages = document.getElementsByTagName("img");
+    let windowWidth = window.screen.width;
+    for (let i = 0; i < allImages.length; i++) {
+      console.log(allImages[i].clientWidth);
+      console.log(window.screen.width);
+      if (windowWidth < allImages[i].clientWidth) {
+        allImages[i].style.display = "none";
+      }
+    }
+  </script>
 </html>
