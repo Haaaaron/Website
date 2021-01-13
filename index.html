@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9"/>
     <link rel="stylesheet" href="./main.css" />
-    <link rel="icon" type="image/x-icon" href="./assets/" />
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
     <script type="text/javascript" src="./javascript/main.js'"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap"
@@ -42,9 +42,9 @@
         </p>
         <div id="images">
           <img src="assets/mandelbrot.png" />
-          <img src="assets/mandelbrot1.png" />
+          <img src="assets/mandelbrot1.jpg" />
           <img src="assets/mandelbrot3.png" />
-          <img src="assets/mandelbrot2.png" />
+          <img src="assets/mandelbrot2.jpg" />
         </div>
       </div>
     </div>
@@ -58,6 +58,8 @@
       console.log(window.screen.width);
       if (windowWidth < allImages[i].clientWidth) {
         allImages[i].style.display = "none";
+        document.body.style.padding="1em 1em"
+
       }
     }
   </script>
