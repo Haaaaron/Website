@@ -30,6 +30,9 @@ body {
 .buttons {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 450px;
+  margin: bottom 0.5em;
 }
 
 button {
@@ -40,8 +43,7 @@ button {
   height: 50px;
   font-size: 0.8em;
   margin-top: 0.5em;
-  margin-bottom: 0.5em;
-  width: 7em;
+  width: 120px;
   cursor: pointer;
   transition: 800ms ease all;
   outline: none;
@@ -73,6 +75,31 @@ button:hover:after {
   transition: 800ms ease all;
 }
 
+#email {
+  font: size 0.8rem;
+  heigth: 0;
+  width: 0;
+  opacity: 0;
+  background-color: #ffffff;
+
+  overflow: hidden;
+  text-align: center;
+}
+
+#ebutton:hover + #email {
+  transition: 700ms ease all;
+  background-color: #fee8d3;
+  opacity: 1;
+  heigth: auto;
+  width: 360px;
+}
+
+#email:hover {
+  background-color: #fee8d3;
+  opacity: 1;
+  heigth: 50px;
+  width: 360px;
+}
 img {
   padding: 5px;
   height: 500px;

@@ -2,7 +2,10 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9"/>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=0.9, maximum-scale=0.9"
+    />
     <link rel="stylesheet" href="./main.css" />
     <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
     <script type="text/javascript" src="./javascript/main.js'"></script>
@@ -20,33 +23,45 @@
           <p>Theoretical physicist and programmer.</p>
           <p>Student at Univeristy of Helsinki.</p>
           <p>
-            Passion for understading systems for what they are and depicting
-            them analytically and/or computationally.
+            Passion for understanding systems for what they are. Experienced in
+            depicting them analytically and/or computationally.
           </p>
         </div>
         <div class="buttons">
           <a href="./Aaron_Haarti_CV.pdf"><button>CV</button></a>
           <a href="https://github.com/Haaaaron" target="_blank"
             ><button>Github</button></a
-          <a href="mailto: aaron.haarti@protonmail.com"
-            ><button>Email</button></a
           >
+          <div id="ebutton">
+            <a href="mailto: aaron.haarti@protonmail.com"
+              ><button>Email</button></a
+            >
+          </div>
+          <div id="email">aaron.haarti@protonmail.com</div>
         </div>
       </div>
       <div id="set">
         <p>
           Generated with
-          <a href="https://github.com/Haaaaron/Mandelbrot-Zoom" target="_blank" id="link"
+          <a
+            href="https://github.com/Haaaaron/Mandelbrot-Zoom"
+            target="_blank"
+            id="link"
             >Mandelbrot-Zoom</a
-          >. The <a href="https://mandelbrotzoom.pythonanywhere.com/" target="_blank" id="link"
-          >webapp</a
-        > utilizes Fortran to do the heavy lifting.
+          >. The
+          <a
+            href="https://mandelbrotzoom.pythonanywhere.com/"
+            target="_blank"
+            id="link"
+            >webapp</a
+          >
+          utilizes Fortran to do the heavy lifting.
         </p>
         <div id="images">
           <img src="assets/mandelbrot.png" />
           <img src="assets/mandelbrot1.jpg" />
           <img src="assets/mandelbrot3.png" />
-          <img src="assets/mandelbrot2.jpg" style = "width: 813px"/>
+          <img src="assets/mandelbrot2.jpg" style="width: 813px" />
         </div>
       </div>
     </div>
@@ -60,8 +75,7 @@
       console.log(window.screen.width);
       if (windowWidth < allImages[i].clientWidth) {
         allImages[i].style.display = "none";
-        document.body.style.padding="1em 1em"
-
+        document.body.style.padding = "1em 1em";
       }
     }
   </script>
