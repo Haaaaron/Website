@@ -38,12 +38,12 @@ body {
 button {
   background: #fee8d3;
   color: #7f2704;
-  border: none;
   position: relative;
+  border: none;
   height: 50px;
   font-size: 0.8em;
   margin-top: 0.5em;
-  width: 120px;
+  width: 140px;
   cursor: pointer;
   transition: 800ms ease all;
   outline: none;
@@ -87,18 +87,18 @@ button:hover:after {
 }
 
 #ebutton:hover + #email {
-  transition: width 700ms ease, heigth 700ms ease, opacity 1000ms ease;
+  transition: width 700ms ease, heigth 700ms ease, opacity 1400ms ease;
   background-color: #fee8d3;
   opacity: 1;
   heigth: auto;
-  width: 360px;
+  width: 420px;
 }
 
 #email:hover {
   background-color: #fee8d3;
   opacity: 1;
   heigth: 50px;
-  width: 360px;
+  width: 420px;
 }
 img {
   padding: 5px;
@@ -114,4 +114,15 @@ img {
   background-color: #7f2704;
   color: #ffffff;
   transition: 400ms ease all;
+}
+
+@media only screen and (max-width: 600px) {
+  button {
+    width: 25vw;
+  }
+  #ebutton:hover + #email {
+    opacity: 0;
+    heigth: 0;
+    width: 0;
+  }
 }
