@@ -79,14 +79,12 @@ img {
 }
 
 #link {
-  background-color: #7f2704;
-  color: #ffffff;
-  text-decoration: none;
+  color: #7f2704;
   padding: 0 3px 0 3px;
 }
 
 #link:hover {
-  background-color: rgb(241, 237, 234);
-  color: #000000;
+  background-color: #7f2704;
+  color: #ffffff;
   transition: 400ms ease all;
 }
