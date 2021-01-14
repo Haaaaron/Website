@@ -87,7 +87,7 @@ button:hover:after {
 }
 
 #ebutton:hover + #email {
-  transition: 700ms ease all;
+  transition: width 700ms ease, heigth 700ms ease, opacity 1000ms ease;
   background-color: #fee8d3;
   opacity: 1;
   heigth: auto;
