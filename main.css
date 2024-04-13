@@ -72,34 +72,24 @@ button:after {
 button:hover:before,
 button:hover:after {
   width: 100%;
-  transition: 800ms ease all;
+  transition: 300ms ease all;
 }
 
 #email {
   font: size 0.8rem;
-  heigth: 0;
-  width: 0;
-  opacity: 0;
-  background-color: #ffffff;
-
+  width: 410px;
+  background-color: #fee8d3;
+  border-top:10px solid rgb(241, 237, 234);
+  padding: 5px;
   overflow: hidden;
   text-align: center;
 }
 
-#ebutton:hover + #email {
-  transition: width 700ms ease, heigth 700ms ease, opacity 1400ms ease;
-  background-color: #fee8d3;
-  opacity: 1;
-  heigth: auto;
-  width: 420px;
+#email a {
+  color: inherit;
+  text-decoration: none;
 }
 
-#email:hover {
-  background-color: #fee8d3;
-  opacity: 1;
-  heigth: 50px;
-  width: 420px;
-}
 img {
   padding: 5px;
   height: 500px;
